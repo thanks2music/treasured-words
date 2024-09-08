@@ -1,6 +1,7 @@
 import { CSSTransition } from "react-transition-group";
 import { gsap } from "gsap";
 import Home from "../components/Home";
+import styles from "../components/Home.module.sass";
 
 export default function HomePage() {
   const onEnter = (node: any) => {
