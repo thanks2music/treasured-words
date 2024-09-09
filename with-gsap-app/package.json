@@ -7,10 +7,12 @@
   },
   "dependencies": {
     "gsap": "^3.11.3",
+    "gsap-trial": "^3.12.5",
     "modern-css-reset": "^1.4.0",
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-gsap": "^3.2.1",
     "react-transition-group": "^4.4.5",
     "sass": "^1.56.2"
   },

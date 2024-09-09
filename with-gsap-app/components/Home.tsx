@@ -1,17 +1,12 @@
-import Title from "./Title";
-import Content from "./Content";
+import Words from "./Words";
+import styles from "../components/Home.module.sass";
 
 export default function Home() {
   return (
-    <div className="inner">
-      <Title lineContent="With-GSAP" lineContent2="Using NEXT" />
-      <div>
-        <div className="other">
-          {/* Does project report used question death, out more rhetoric unpleasing
-          what compared both of sentinels. */}
-          <Content />
-        </div>
-      </div>
-    </div>
+    <>
+      <h1 className={styles.words}>
+        <Words />
+      </h1>
+    </>
   );
 }

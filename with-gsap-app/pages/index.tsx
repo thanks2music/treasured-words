@@ -16,7 +16,7 @@ export default function HomePage() {
         stagger: {
           amount: 0.6,
         },
-      },
+      }
     );
   };
   const onExit = (node: any) => {
@@ -29,13 +29,13 @@ export default function HomePage() {
         stagger: {
           amount: 0.2,
         },
-      },
+      }
     );
   };
 
   return (
     <>
-      <div className="container">
+      <div className={styles.container}>
         <CSSTransition
           in={true}
           timeout={1200}
