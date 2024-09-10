@@ -9,26 +9,30 @@ const Home = () => {
   const [fadeIn, setFadeIn] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const switchWord = () => {
       setFadeIn(false);
+
       setTimeout(() => {
         const randomWord = words[Math.floor(Math.random() * words.length)];
         setCurrentWord(randomWord);
         setFadeIn(true);
-      }, 1000); // フェードアウトに1秒かかると仮定
-    }, 5000); // 5秒間隔で次の言葉に切り替える
+      }, 1000);
+    };
+
+    // 初回実行
+    switchWord();
+    // 6秒間隔で次の言葉に切り替える
+    const interval = setInterval(switchWord, 8000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <main className={styles.main}>
-      <div className={styles.words}>
-        <p
-          className={`${styles.word} ${
-            fadeIn ? styles.fadeIn : styles.fadeOut
-          }`}
-        >
+      <div
+        className={`${styles.words} ${fadeIn ? styles.fadeIn : styles.fadeOut}`}
+      >
+        <p className={styles.word}>
           {currentWord.text.split("").map((char, index) => (
             <span
               className={styles.word}
