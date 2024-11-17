@@ -1,9 +1,12 @@
 @import "../_mixins"
 
 .main
-  display: flex
+  display: none
   justify-content: center
   align-items: center
+
+  &.isShow
+    display: flex
 
 .words
   position: absolute

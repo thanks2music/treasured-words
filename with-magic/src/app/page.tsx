@@ -6,7 +6,8 @@ import styles from "@/styles/modules/Home.module.sass";
 
 const Home = () => {
   const [currentWord, setCurrentWord] = useState(words[0]);
-  const [fadeIn, setFadeIn] = useState(true);
+  const [fadeIn, setFadeIn] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const switchWord = () => {
@@ -19,16 +20,25 @@ const Home = () => {
       }, 1000);
     };
 
-    // 初回実行
-    switchWord();
-    // 6秒間隔で次の言葉に切り替える
-    const interval = setInterval(switchWord, 8000);
+    // 読み込み完了時の処理
+    setIsLoaded(true);
+    // 1秒後にswitchWordを実行
+    const initialTimeout = setTimeout(() => {
+      switchWord();
 
-    return () => clearInterval(interval);
+      // 最初のswitchWord実行後、8秒間隔で次の言葉に切り替える
+      const interval = setInterval(switchWord, 8000);
+      return () => clearInterval(interval);
+    }, 1000);
+
+    return () => clearTimeout(initialTimeout);
   }, []);
 
+  // currentWordがnullの場合は何も表示しない
+  if (!currentWord) return null;
+
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main} ${isLoaded ? styles.isShow : ""}`}>
       <div
         className={`${styles.words} ${fadeIn ? styles.fadeIn : styles.fadeOut}`}
       >
